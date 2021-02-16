@@ -8,7 +8,7 @@
 
 ## Live Demo:
 
-[Live Demo Link] )
+[Live Demo Link] (https://karthykarthick.github.io/weather-app/)
 
 ##  Built with
 
