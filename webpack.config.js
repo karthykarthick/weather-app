@@ -1,9 +1,8 @@
+/* eslint-disable no-undef */
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
-
-
 
 
 const sassRules = {
@@ -12,30 +11,30 @@ const sassRules = {
     // Creates `style` nodes from JS strings
     MiniCssExtractPlugin.loader,
     // Translates CSS into CommonJS
-    "css-loader",
+    'css-loader',
     // Compiles Sass to CSS
-    "sass-loader",
+    'sass-loader',
   ],
-}
+};
 
 module.exports = {
   entry: './src/index.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'app.js'
+    filename: 'app.js',
   },
   module: {
     rules: [
-      sassRules
-    ]
+      sassRules,
+    ],
   },
   plugins: [new HtmlWebpackPlugin({
     title: 'Title fo your project',
-    template: 'src/index.html'
-    }),
-    new MiniCssExtractPlugin({
-      filename: "./css/styles.css"
-    }),
+    template: 'src/index.html',
+  }),
+  new MiniCssExtractPlugin({
+    filename: './css/styles.css',
+  }),
   ],
   optimization: {
     minimize: true,
@@ -43,8 +42,8 @@ module.exports = {
       new CssMinimizerPlugin({
         sourceMap: true,
       }),
-    ]
+    ],
   },
 
   devtool: 'source-map',
-}
+};
