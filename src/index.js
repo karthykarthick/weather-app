@@ -4,13 +4,37 @@ import clouds from "../src/images/clouds.svg";
 import rain from "../src/images/rain.svg";
 import snowflake from "../src/images/snowflake.svg";
 
-
 const loc = document.getElementById("location");
 const tempIcon = document.getElementById("temp-icon");
 const tempValue = document.getElementById("temp-value");
 const climate = document.getElementById("climate");
 const searchInput = document.getElementById("search-input");
 const searchButton = document.getElementById("search-button");
+const temp = document.querySelector("#selectt");
+console.log(temp);
+
+function weatherConverter(feels_like) {
+  console.log(feels_like);
+  temp.addEventListener("click", (e) => {
+    let tempval = e.target.value;
+    console.log(tempval);
+    if (tempval == 1) {
+      var celcius = Math.round(feels_like - 273.15);
+      console.log(celcius);
+      tempValue.textContent = celcius + "°C";
+      console.log(tempval);
+      return celcius;
+    }else{
+      var faren = feels_like;
+      faren = (feels_like - 273.15) * 9/5 + 32;
+      faren = Math.round(faren);
+      console.log(faren);
+      tempValue.textContent = faren + "°F";
+      // console.log(round);
+      return faren;
+    }
+  });
+}
 
 searchButton.addEventListener("click", (e) => {
   e.preventDefault();
@@ -25,15 +49,15 @@ const getWeather = async (city) => {
     );
 
     const weatherData = await response.json();
-    console.log(weatherData);
 
     const { name } = weatherData;
     const { feels_like } = weatherData.main;
     const { id, main } = weatherData.weather[0];
-
     loc.textContent = name;
     climate.textContent = main;
-    tempValue.textContent = Math.round(feels_like - 273);
+    weatherConverter(feels_like);
+   
+    // tempValue.textContent = Math.round(feels_like - 273);
 
     if (id < 300 && id < 200) {
       tempIcon.src = storm;
@@ -72,7 +96,7 @@ window.addEventListener("load", () => {
 
           loc.textContent = name;
           climate.textContent = main;
-          tempValue.textContent = Math.round(feels_like - 273);
+          tempValue.textContent = Math.round(feels_like - 273) + "°C";
 
           if (id < 300 && id < 200) {
             tempIcon.src = storm;
