@@ -1,20 +1,27 @@
-const loc = document.getElementById('location');
-const tempIcon = document.getElementById('temp-icon');
-const tempValue = document.getElementById('temp-value');
-const climate = document.getElementById('climate');
-const searchInput = document.getElementById('search-input');
-const searchButton = document.getElementById('search-button');
+import "./scss/styles.scss";
+import storm from "../src/images/storm.svg";
+import clouds from "../src/images/clouds.svg";
+import rain from "../src/images/rain.svg";
+import snowflake from "../src/images/snowflake.svg";
 
-searchButton.addEventListener('click', (e) => {
+
+const loc = document.getElementById("location");
+const tempIcon = document.getElementById("temp-icon");
+const tempValue = document.getElementById("temp-value");
+const climate = document.getElementById("climate");
+const searchInput = document.getElementById("search-input");
+const searchButton = document.getElementById("search-button");
+
+searchButton.addEventListener("click", (e) => {
   e.preventDefault();
   getWeather(searchInput.value);
-  searchInput.Value = '';
+  searchInput.Value = "";
 });
 
 const getWeather = async (city) => {
   try {
     const response = await fetch(
-      `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=90582edac32da819f08413ad8ebbcb45`,
+      `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=90582edac32da819f08413ad8ebbcb45`
     );
 
     const weatherData = await response.json();
@@ -29,24 +36,24 @@ const getWeather = async (city) => {
     tempValue.textContent = Math.round(feels_like - 273);
 
     if (id < 300 && id < 200) {
-      tempIcon.src = './images/storm.svg';
+      tempIcon.src = storm;
     } else if (id < 400 && id < 300) {
-      tempIcon.src = './images/clouds.svg';
+      tempIcon.src = clouds;
     } else if (id < 600 && id < 500) {
-      tempIcon.src = './images/rain.svg';
+      tempIcon.src = rain;
     } else if (id < 700 && id < 600) {
-      tempIcon.src = './images/snowflake.svg';
+      tempIcon.src = snowflake;
     } else if (id < 800 && id < 700) {
-      tempIcon.src = './images/clouds.svg';
+      tempIcon.src = clouds;
     } else if (id == 800) {
-      tempIcon.src = './images/clouds.svg';
+      tempIcon.src = clouds;
     }
   } catch (error) {
-     alert("City Not Found");
+    alert("City Not Found");
   }
 };
 
-window.addEventListener('load', () => {
+window.addEventListener("load", () => {
   let long;
   let lat;
 
@@ -68,19 +75,18 @@ window.addEventListener('load', () => {
           tempValue.textContent = Math.round(feels_like - 273);
 
           if (id < 300 && id < 200) {
-            tempIcon.src = './images/storm.svg';
+            tempIcon.src = storm;
           } else if (id < 400 && id < 300) {
-            tempIcon.src = './images/clouds.svg';
+            tempIcon.src = clouds;
           } else if (id < 600 && id < 500) {
-            tempIcon.src = './images/rain.svg';
+            tempIcon.src = rain;
           } else if (id < 700 && id < 600) {
-            tempIcon.src = './images/snowflake.svg';
+            tempIcon.src = snowflake;
           } else if (id < 800 && id < 700) {
-            tempIcon.src = './images/clouds.svg';
+            tempIcon.src = clouds;
           } else if (id == 800) {
-            tempIcon.src = './images/clouds.svg';
+            tempIcon.src = clouds;
           }
-         
         });
     });
   }

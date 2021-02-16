@@ -4,6 +4,15 @@ const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 
+const fileLoaderRules = {
+  test: /\.(png|jpe?g|gif|svg)$/i,
+  loader: 'file-loader',
+  options: {
+    outputPath: 'images',
+    name: '[name].[ext]',
+  },
+};
+
 
 const sassRules = {
   test: /\.s[ac]ss$/i,
@@ -26,6 +35,7 @@ module.exports = {
   module: {
     rules: [
       sassRules,
+      fileLoaderRules
     ],
   },
   plugins: [new HtmlWebpackPlugin({
