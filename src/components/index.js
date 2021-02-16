@@ -2,7 +2,7 @@
 
 let loc = document.getElementById("location");
 let tempIcon = document.getElementById("temp-icon");
-let tempValue = document.getElementById("temp-value");
+let tempValue = document.getElementById("tem[-value");
 let climate = document.getElementById("climate");
 let iconfile;
 const searchInput = document.getElementById("search-input");
@@ -30,7 +30,6 @@ window.addEventListener("load", () => {
           loc.textContent = name;
           climate.textContent = main;
           tempValue.textContent = Math.round(feels_like - 273);
-          console.log(data);
         });
 
       
