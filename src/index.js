@@ -17,11 +17,11 @@ function weatherConverter(feels_like) {
   temp.addEventListener("click", (e) => {
     let tempval = e.target.value;
     if (tempval == 1) {
-      var celcius = Math.round(feels_like - 273.15);
+      let celcius = Math.round(feels_like - 273.15);
       tempValue.textContent = celcius + "°C";
       return celcius;
     } else {
-      var faren = feels_like;
+      let faren = feels_like;
       faren = ((feels_like - 273.15) * 9) / 5 + 32;
       faren = Math.round(faren);
       tempValue.textContent = faren + "°F";
