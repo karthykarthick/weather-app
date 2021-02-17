@@ -98,26 +98,20 @@ const climate = document.getElementById("climate");
 const searchInput = document.getElementById("search-input");
 const searchButton = document.getElementById("search-button");
 const temp = document.querySelector("#selectt");
-console.log(temp);
+
 
 function weatherConverter(feels_like) {
-  console.log(feels_like);
   temp.addEventListener("click", (e) => {
     let tempval = e.target.value;
-    console.log(tempval);
     if (tempval == 1) {
-      var celcius = Math.round(feels_like - 273.15);
-      console.log(celcius);
+      let celcius = Math.round(feels_like - 273.15);
       tempValue.textContent = celcius + "°C";
-      console.log(tempval);
       return celcius;
-    }else{
-      var faren = feels_like;
-      faren = (feels_like - 273.15) * 9/5 + 32;
+    } else {
+      let faren = feels_like;
+      faren = ((feels_like - 273.15) * 9) / 5 + 32;
       faren = Math.round(faren);
-      console.log(faren);
       tempValue.textContent = faren + "°F";
-      // console.log(round);
       return faren;
     }
   });
@@ -143,8 +137,6 @@ const getWeather = async (city) => {
     loc.textContent = name;
     climate.textContent = main;
     weatherConverter(feels_like);
-   
-    // tempValue.textContent = Math.round(feels_like - 273);
 
     if (id < 300 && id < 200) {
       tempIcon.src = _src_images_storm_svg__WEBPACK_IMPORTED_MODULE_1__.default;
